@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <style>
+        .table, th, td {
+            border: 2px solid black;
+        }
+        .body
+        {
+            background-color : lightblue;
+        }
+        .college
+        {
+            color : red;
+        }
+        .table{
+            border: 2px solid black;
+        }
+    tr:nth-child(even) {background-color: #f2f2f2;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'onlineapp/bulma.css' %}" />
+</head>
+<body class="body">
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Students from {{college.name}}
+      </h1>
+    </div>
+  </div>
+</section>
+<a href="{% url 'add_student_details' college.id %}" class="button is-success">Add Student</a>
+<a href="{% url 'logout' %}" class="button is-success">Logout</a>
+<table class = "table" align = "center">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Marks</th>
+        <th>Options</th>
+        <th></th>
+    </tr>
+    {% for i in students %}
+    <tr>
+        <td>{{i.name}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.mocktest1.total}}</td>
+        <td><a href="{% url 'edit_student_details' i.id %}" class="button is-success">Edit</a></td>
+        <td><a href="{% url 'delete_student_details' i.id %}" class="button is-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

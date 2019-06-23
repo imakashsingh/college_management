@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'onlineapp/bulma.css' %}" />
+    <style>
+        .table, th, td {
+            border: 3px solid black;
+        }
+        .body
+        {
+            background-color : lightblue;
+        }
+        .college
+        {
+            color : red;
+        }
+        .table{
+            width : 60%;
+            border: 2px solid black;
+        }
+       tr:nth-child(even) {background-color: #f2f2f2;}
+    </style>
+</head>
+<body class = "body">
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Participating Colleges
+      </h1>
+    </div>
+  </div>
+</section>
+<a id="add_clg" class="button is-success" href="{% url 'add_college_details' %}">Add Colleges</a>
+<a href="{% url 'logout' %}" class="button is-success">Logout</a>
+    <table class="table" align = "center">
+    <tr>
+        <th>Name</th>
+        <th>Acronym</th>
+        <th>Options</th>
+        <th></th>
+    </tr>
+        {% for college in jails %}
+        <tr>
+            <td>{{college.name}}</td>
+            <td><a href="/colleges/{{college.id}}" class="button is-success is-outlined">{{college.acronym}}</a></td>
+            <td><a href="{% url 'edit_college' college.id %}" class="button is-success">Edit</a></td>
+            <td><a href="{% url 'delete_college' college.id %}" class="button is-danger">Delete</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>

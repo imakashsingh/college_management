@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'onlineapp/bulma.css' %}" />
+</head>
+<body>
+<form method="post" class = "box">
+    {% csrf_token %}
+    username: <input type="text" name="username" value="" size="50" class="input is-info"/>
+    <br />
+    <br>
+    password: <input type="password" name="password" value="" size="50" class="input is-info" />
+    <br />
+    <input type="submit" value="Login" class="button is-info"/>
+    <a href="{% url 'signup' %}" class="button is-info">SignUp</a>
+</form>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{% if college_list %}
+    <table>
+        {% for x in college_list %}
+        <tr><td>{{x.name}}</td><td>{{x.acronym}}</td><td><a href="">x.name</a></td></tr>
+        {% endfor %}
+    </table>
+{% endif %}

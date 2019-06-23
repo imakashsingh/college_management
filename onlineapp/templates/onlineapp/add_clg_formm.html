@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add College</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'onlineapp/bulma.css' %}" />
+</head>
+<body>
+<form method="post" class = "box">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Submit" class="button is-primary is-rounded">
+</form>
+</body>
+</html>
